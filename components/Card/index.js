@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
+import {useState} from 'react';
 
 const Card = ({ title, showSub, background, imgUrl, children }) => {
+    const [someText, setSomeText] = useState(null);
+    const handleClick = () => {
+        setSomeText("Click detected")
+    }
   return (
     <div class="flex justify-center">
       <div
@@ -15,11 +20,12 @@ const Card = ({ title, showSub, background, imgUrl, children }) => {
           {showSub && (
             <p class="text-gray-500 text-sm mt-2">This is the card subtitle</p>
           )}
-          <p class="text-gray-700 text-base mt-4 mb-4">{children}</p>
+          <p class="text-gray-700 text-base mt-4 mb-4">{someText ?? children}</p>
 
           <button
             type="button"
             class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs uppercase rounded shadow-md"
+            onClick={() => handleClick()}
           >
             Some action
           </button>
